@@ -10,6 +10,7 @@
     wget
     starship
     clang
+    fastfetch
   ];
 
 }
