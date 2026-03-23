@@ -60,8 +60,8 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./configuration.nix
-            ./desktop/window_manager.nix
+            ./hosts/pc_h61
+            ./desktop/niri_noctalia.nix
             ./apps/system.nix
             ./apps/neovim-nightly.nix
           ];
