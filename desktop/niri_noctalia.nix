@@ -8,8 +8,6 @@
     fuzzel
     alacritty
     wl-clipboard-rs
-    kitty
-    firefox
   ];
 
 }

@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+
+  };
+in
 {
   environment.systemPackages = with pkgs; [
+    unstable.firefox
     btop
     ripgrep
     rustup

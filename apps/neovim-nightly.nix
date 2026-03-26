@@ -1,9 +1,14 @@
 { inputs, pkgs, ... }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+
+  };
+in
 {
   environment.systemPackages = [
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+    unstable.rust-analyzer
     pkgs.tree-sitter
-    pkgs.rust-analyzer
     pkgs.clippy
     pkgs.rustfmt
     pkgs.nixfmt
