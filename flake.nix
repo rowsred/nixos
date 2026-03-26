@@ -9,24 +9,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    my_dwm.url = "github:rowsred/my_dwm/main";
-    my_dwm.flake = false;
-
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     xlibre-overlay.url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.noctalia-qs.follows = "noctalia-qs";
-    };
-
-    noctalia-qs = {
-      url = "github:noctalia-dev/noctalia-qs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
