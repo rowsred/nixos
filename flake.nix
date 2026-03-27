@@ -17,7 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
-
   outputs =
     { self, ... }@inputs:
     {

@@ -25,7 +25,7 @@ keymap("n", "<leader>w", function()
 	vim.notify("Saved", vim.log.levels.INFO, {
 		title = "Neovim",
 		icon = "💾",
-		timeout = 2000, -- 2 detik saja agar cepat hilang
+		timeout = 500, -- 2 detik saja agar cepat hilang
 	})
 end, { desc = "Save file with notification", silent = true })
 keymap("n", "<leader>e", ":Ex<CR>", { desc = "Explorer", silent = true })
@@ -302,7 +302,7 @@ vim.lsp.config("nixd", {
 	},
 })
 vim.lsp.config("slint", {
-	cmd = "slint-lsp",
+	cmd = { "slint-lsp" },
 })
 
 vim.lsp.enable("lua_ls")
