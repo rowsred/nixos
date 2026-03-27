@@ -26,7 +26,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/pc_h61
-          ./desktop/niri_noctalia.nix
+          ./desktop/sway.nix
+          #  ./desktop/niri_noctalia.nix
           #          ./desktop/xlibre_dwm.nix
           #./desktop/xlibre_awesome.nix
           ./apps/system.nix

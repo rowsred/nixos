@@ -380,3 +380,32 @@ require("ibl").setup()
 vim.pack.add({
 	{ src = "https://github.com/mrcjkb/rustaceanvim" },
 })
+vim.g.rustaceanvim = {
+	server = {
+		default_settings = {
+			["rust-analyzer"] = {
+				files = {
+					-- Daftar folder yang WAJIB diabaikan agar RAM tidak bengkak
+					excludeDirs = {
+						"target", -- Folder build Rust (paling besar)
+						".direnv", -- Folder lingkungan Nix (banyak symlink berat)
+						"build", -- Folder build Android/Gradle
+						".git", -- Metadata repository
+						".gradle", -- Cache Gradle yang sangat besar
+						"app/build", -- Build artifact spesifik Android app
+					},
+					-- Mencegah file watcher memantau folder ini secara real-time
+					watcherExclude = {
+						"target",
+						".direnv",
+						"build",
+						".gradle",
+					},
+					checkOnSave = {
+						allTargets = false, -- Jangan cek test/benchmarks, cukup bin/lib saja
+					},
+				},
+			},
+		},
+	},
+}
