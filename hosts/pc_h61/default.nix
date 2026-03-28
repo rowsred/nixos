@@ -6,10 +6,12 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
 {
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   nix.settings.trusted-users = [
     "root"
     "row"

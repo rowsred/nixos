@@ -151,34 +151,37 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-vim.lsp.config("nixd", {
+vim.lsp.config("slint", {
+	cmd = "slint-lsp",
+})
+vim.lsp.config("nil_ls", {
 	settings = {
-		nixd = {
-			nixpkgs = {
-				expr = "import <nixpkgs> { }",
+		["nil"] = {
+			test = {
+				-- Mengaktifkan pengetesan ekspresi secara otomatis
+				enable = true,
 			},
 			formatting = {
 				command = { "nixfmt" },
 			},
-			options = {
-				nixos = {
-					expr = "(builtins.getFlake (toString ./.)).nixosConfigurations.nixos.options",
-				},
-				home_manager = {
-					expr = '(builtins.getFlake (toString ./.)).homeConfigurations."row@nixos".options',
+			nix = {
+				-- Membatasi RAM agar i3-3240 tidak sesak napas (2GB cukup)
+				maxMemoryMB = 2048,
+				flake = {
+					-- WAJIB: Agar nil otomatis membaca flake.nix di folder project
+					autoEvalInputs = true,
+					-- Nama input nixpkgs di flake.nix kamu
+					nixpkgsInputName = "nixpkgs",
 				},
 			},
 		},
 	},
 })
-vim.lsp.config("slint", {
-	cmd = "slint-lsp",
-})
 
 vim.lsp.enable("lua_ls")
 --vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("bashls")
-vim.lsp.enable("nixd")
+vim.lsp.enable("nil_ls")
 vim.lsp.enable("slint")
 
 --: diagnostic custom
