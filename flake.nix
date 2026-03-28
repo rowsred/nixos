@@ -12,24 +12,18 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     xlibre-overlay.url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
   outputs =
-    { self, ... }@inputs:
-    {
-      nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/pc_h61
-          #./desktop/niri_noctalia.nix
-          ./desktop/xlibre_dwm.nix
-          ./apps/system.nix
-          ./apps/neovim-nightly.nix
-        ];
-      };
+    { self, flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+      imports = [
+        ./parts/nixos.nix
+      ];
     };
 }
