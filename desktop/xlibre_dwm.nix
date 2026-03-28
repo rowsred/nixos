@@ -6,6 +6,9 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    (pkgs.slstatus.overrideAttrs {
+      src = /home/row/nixos_conf/desktop/dwm/slstatus;
+    })
     xclip
     rofi
   ];

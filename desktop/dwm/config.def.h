@@ -4,14 +4,14 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#171d17"; // Neutral Variant 10 (Background Utama: Hitam-Hijau Sangat Pekat)
+static const char col_gray2[]       = "#424940"; // Neutral Variant 30 (Border Tidak Aktif: Abu-abu Hijau Gelap)
+static const char col_gray3[]       = "#8c9388"; // Neutral Variant 60 (Teks Tag Tidak Aktif: Hijau Pudar Halus)
+static const char col_gray4[]       = "#d2e8d1"; // Primary 90 (Teks Aktif: Hijau Mint Sangat Muda/Hampir Putih)
+static const char col_cyan[]        = "#005231"; // Primary 20 (Background Title Bar: Hijau Hutan Pekat & Solid)
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -20,6 +20,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"xrandr","-s","1366x768", NULL,
+	"slstatus", NULL,
 	NULL /* terminate */
 };
 
