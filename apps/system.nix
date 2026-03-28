@@ -1,12 +1,15 @@
 { pkgs, inputs, ... }:
 let
   unstable = import inputs.nixpkgs-unstable {
+    config = {
+      allowUnfree = true;
+    };
 
   };
 in
 {
   environment.systemPackages = with pkgs; [
-    unstable.firefox
+    unstable.google-chrome
     unstable.kitty
     unstable.vscodium
     btop
