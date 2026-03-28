@@ -1,0 +1,102 @@
+/*******************************************************************************
+ * MATERIAL 3 GREEN - COMPACT CAPSULE (PADAT & BERDEMPETAN)
+ *******************************************************************************/
+
+* {
+    /* Surface & Background */
+    bg0:     #171d17; 
+    bg1:     #222a22; 
+    
+    /* Text Colors */
+    fg0:     #e1e3df; 
+    fg1:     #b9c2b8; 
+    
+    /* Material 3 Primary Accents */
+    accent:  #005231; 
+    select:  #d2e8d1; 
+    border:  #424940; 
+
+    /* Font - Ukuran sedikit dikecilkan agar proporsional */
+    font: "JetBrainsMono Nerd Font 10";
+    background-color: transparent;
+    text-color:       @fg0;
+    margin:           0;
+    padding:          0;
+    spacing:          0;
+}
+
+window {
+    width:            420px;         /* Ukuran diperkecil agar compact */
+    background-color: @bg0;
+    border:           2px;
+    border-color:     @border;
+    border-radius:    28px;         /* Gaya Kapsul Luar */
+    anchor:           center;
+    location:         center;
+}
+
+mainbox {
+    padding:          10px;          /* Padding luar dipersempit */
+    children:         [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing:          8px;
+    padding:          8px 16px;      /* Padding lebih tipis */
+    background-color: @bg1;
+    border-radius:    22px;         /* Gaya Kapsul Input Bar */
+    margin:           0 0 6px 0;    /* Jarak ke list dipersempit */
+    children:         [ "prompt", "entry" ];
+}
+
+prompt {
+    text-color:       @select;
+    font:             "JetBrainsMono Nerd Font Bold 10";
+}
+
+entry {
+    placeholder:       "Search...";
+    placeholder-color: @fg1;
+    text-color:        @fg0;
+}
+
+listview {
+    fixed-height:     false;
+    height:           300px;         /* Tinggi dikurangi agar tidak terlalu panjang */
+    border:           0;
+    spacing:          2px;           /* LIST BERDEMPETAN */
+    scrollbar:        false;
+    padding:          2px 0 0;
+}
+
+element {
+    padding:          6px 12px;      /* Padding internal item dipersempit */
+    border-radius:    18px;         /* Gaya Kapsul untuk Item List */
+    cursor:           pointer;
+}
+
+element normal.normal, element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg0;
+}
+
+element selected.normal {
+    background-color: @accent; 
+    text-color:       @select; 
+}
+
+element-text {
+    text-color:       inherit;
+    vertical-align:   0.5;
+}
+
+element-icon {
+    size:             20px;          /* Ikon diperkecil */
+    padding:          0 10px 0 0;
+}
+
+error-message {
+    padding:          10px;
+    background-color: @bg0;
+    text-color:       #ffb4ab;
+}
