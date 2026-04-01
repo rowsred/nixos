@@ -11,7 +11,6 @@ vim.opt.tabstop = 4 -- Lebar visual dari sebuah karakter tab
 vim.opt.softtabstop = 4 -- Jumlah spasi yang dimasukkan saat menekan <Tab>
 vim.opt.shiftwidth = 4 -- Jumlah spasi untuk indentasi otomatis (>> atau <<)
 vim.opt.expandtab = true -- Mengubah karakter tab menjadi spasi
-
 vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
@@ -28,18 +27,21 @@ local status_fidget, fidget = pcall(require, "fidget")
 if status_fidget then
 	fidget.setup({})
 end
-
 require("ibl").setup()
 require("mini.basics").setup()
 require("mini.pairs").setup()
 require("mini.completion").setup({
+	lsp_completion = {
+		source_func = "completefunc",
+		auto_setup = true,
+		-- Ini adalah kuncinya:
+		snippet_insert = nil,
+	},
 	delay = {
 		completion = 50, -- Dipercepat agar langsung muncul saat mengetik
 		info = 100,
 		signature = 50,
 	},
-	-- Ini memastikan jika LSP tidak punya saran, dia langsung lari ke kata-kata di buffer
-	fallback_action = "<C-n>",
 })
 require("mini.snippets").setup()
 require("mini.pick").setup()
@@ -109,7 +111,8 @@ vim.lsp.config("lua_ls", {
 			},
 			workspace = {
 				-- Mengambil semua library Neovim & plugin secara otomatis
-				library = vim.api.nvim_get_runtime_file("", true),
+				library = vim.env.VIMRUNTIME,
+				--library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false,
 			},
 			telemetry = {
@@ -119,15 +122,22 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.config("slint", {
+vim.lsp.config("nngjslint", {
 	cmd = { "slint-lsp" },
+})
+vim.lsp.enable("slint")
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "slint",
+	callback = function()
+		vim.cmd([[lsp enable]])
+	end,
 })
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("nil_ls")
-vim.lsp.enable("slint")
 vim.opt.ignorecase = true
 -- Jika kamu mengetik huruf besar secara sengaja, baru dia jadi case sensitive
 vim.opt.smartcase = true
 -- Mengatur perilaku menu popup (pum)
 ---- Konfigurasi popup menu yang lebih cerdas dan tidak mengganggu
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "nosort" }
+vim.opt.pumheight = 16 -- Maksimal 10 baris yang muncul di menu popup
