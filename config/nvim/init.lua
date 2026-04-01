@@ -12,6 +12,51 @@ vim.opt.smartcase = true
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "nosort" }
 vim.opt.pumheight = 16 -- Maksimal 10 baris yang muncul di menu popup
 
+-- 1. Definisikan Warna (Warna Material Theme)
+--
+-- 1. Warna Background (Hijau, Kuning, Merah) dengan Teks Hitam
+vim.cmd([[
+  highlight StatusNormal guibg=#98be65 guifg=#000000 gui=bold
+  highlight StatusInsert guibg=#ecbe7b guifg=#000000 gui=bold
+  highlight StatusVisual guibg=#ff6c6b guifg=#000000 gui=bold
+]])
+
+-- 2. Fungsi LSP (Jangan sampai hilang!)
+local function lsp_status()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	-- Ambil nama client pertama saja agar rapi
+	return #clients > 0 and "active_lsp : " .. clients[1].name or ""
+end
+
+-- 3. Fungsi Utama Statusline
+function MyStatus()
+	local m = vim.api.nvim_get_mode().mode
+	local mode_char = string.upper(m:sub(1, 1))
+
+	-- Map highlight berdasarkan mode
+	local hl_map = {
+		n = "%#StatusNormal#",
+		i = "%#StatusInsert#",
+		v = "%#StatusVisual#",
+		V = "%#StatusVisual#",
+		[""] = "%#StatusVisual#",
+	}
+	local hl = hl_map[m] or "%#StatusNormal#"
+
+	return table.concat({
+		hl,
+		" ",
+		mode_char,
+		" ", -- Kotak warna background & teks hitam
+		"%#StatusLine# | ", -- Kembali ke warna standar & pemisah
+		"%F %m", -- Nama File & [+]
+		"%=", -- Dorong ke kanan
+		lsp_status(), -- Panggil fungsi LSP di sini
+		" | %l:%c ", -- Lokasi Baris:Kolom
+	})
+end
+
+vim.opt.statusline = "%!v:lua.MyStatus()"
 vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 map("i", "jk", "<Esc>", { noremap = true })
