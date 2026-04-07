@@ -19,6 +19,7 @@ in
     unstable.vscodium
     unstable.kitty
     unstable.fuzzel
+    unstable.wl-clipboard-rs
     btop
     ripgrep
     fd

@@ -231,3 +231,17 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
 		end
 	end,
 })
+vim.pack.add({ { src = "https://github.com/attilarepka/header.nvim" } })
+require("header").setup({
+	allow_autocmds = true,
+	file_name = true,
+	author = "rowsred",
+	date_created = true,
+	date_created_fmt = "%Y-%m-%d %H:%M:%S",
+	date_modified = true,
+	date_modified_fmt = "%Y-%m-%d %H:%M:%S",
+	line_separator = "------",
+	use_block_header = false,
+	license_from_file = false,
+	author_from_git = false,
+})
