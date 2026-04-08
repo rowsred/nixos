@@ -232,6 +232,23 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
 	end,
 })
 vim.pack.add({ { src = "https://github.com/attilarepka/header.nvim" } })
+
+-- Keybinding: <leader>nh (Nix Header)
+vim.keymap.set("n", "<leader>hh", function()
+	local filename = vim.fn.expand("%:t")
+	local date = os.date("%Y-%m-%d")
+	local header = {
+		"# File: " .. filename,
+		"# Author: rowsred",
+		"# Date: " .. date,
+		"# Description: just for hoby",
+		"",
+	}
+	-- Memasukkan baris di baris paling atas (0)
+	vim.api.nvim_buf_set_lines(0, 0, 0, false, header)
+	-- Pindahkan kursor ke baris deskripsi (baris 4, kolom 15)
+	vim.api.nvim_win_set_cursor(0, { 4, 15 })
+end, { desc = "Insert Nix file header" })
 require("header").setup({
 	allow_autocmds = true,
 	file_name = true,

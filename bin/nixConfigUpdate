@@ -86,9 +86,9 @@ restore() {
     # Home files
     for entry in "${HOME_FILES[@]}"; do
         IFS=":" read -r src dest <<< "$entry"
-        if [ -f "$DOTFILES_REPO/$dest" ]; then
+        if [ -f "$CONFIG_DEST/$dest" ]; then
             mkdir -p "$(dirname "$HOME/$src")"
-            rsync -az "$DOTFILES_REPO/$dest" "$HOME/$src"
+            rsync -az "$CONFIG_DEST/$dest" "$HOME/$src"
             print_status "$src" "file" "RESTORED" "$BLUE"
         fi
     done
