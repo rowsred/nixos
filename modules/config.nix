@@ -24,4 +24,17 @@
     ];
 
   };
+
+  flake.homeConfigurations.row = inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = import inputs.nixpkgs-unstable {
+      system = "x86_64-linux";
+    };
+    modules = [
+      {
+        home.username = "row";
+        home.homeDirectory = "/home/row";
+        home.stateVersion = "25.11";
+      }
+    ];
+  };
 }

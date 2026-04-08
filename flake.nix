@@ -21,6 +21,7 @@
     rill.url = "github:rowsred/rill_river_modules_nixos";
     kwm.url = "github:rowsred/river_kwm_modules_nixos";
     import-tree.url = "github:vic/import-tree";
+    home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
