@@ -6,9 +6,14 @@
 {
   flake.modules.homeManager.git-settings = {
     programs.git = {
+
       enable = true;
-      userName = "rowsred";
-      userEmail = "fadlidev99@gmail.com";
+      settings = {
+        user = {
+          name = "rowsred";
+          email = "fadlidev99@gmail.com";
+        };
+      };
     };
   };
 }
