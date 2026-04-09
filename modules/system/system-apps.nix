@@ -5,7 +5,7 @@
 
 { ... }:
 {
-  flake.modules.nixos.apps =
+  flake.modules.nixos.system-apps =
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [

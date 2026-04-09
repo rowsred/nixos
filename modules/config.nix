@@ -4,37 +4,36 @@
 # Description: just for hoby
 
 { self, inputs, ... }:
+let
+  home-mods = self.modules.homeManager;
+  nixos-mods = self.modules.nixos;
+
+in
 {
   flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
 
     specialArgs = { inherit inputs; };
     modules = [
-      self.modules.nixos.hardware-h61
-      self.modules.nixos.boot
-      self.modules.nixos.rill
-      self.modules.nixos.nixos
-      self.modules.nixos.users
-      self.modules.nixos.ly
-      self.modules.nixos.nix-settings
-      self.modules.nixos.apps
+      nixos-mods.hardware-h61
+      nixos-mods.boot
+      nixos-mods.rill
+      nixos-mods.nixos
+      nixos-mods.users
+      nixos-mods.ly
+      nixos-mods.nix-settings
+      nixos-mods.system-apps
       {
         nixpkgs.hostPlatform = "x86_64-linux";
       }
     ];
   };
 
-  flake.homeConfigurations.row = inputs.home-manager.lib.homeManagerConfiguration {
-    pkgs = import inputs.nixpkgs-unstable {
-      system = "x86_64-linux";
-      config = {
-        allowUnfree = true;
-      };
-    };
-    modules = [
-      self.modules.homeManager.nvim
-      self.modules.homeManager.shell-settings
-      self.modules.homeManager.git-settings
-      self.modules.homeManager.dev-apps
+  configurations.home.row.module = {
+    imports = [
+      home-mods.git-settings
+      home-mods.dev-apps
+      home-mods.shell-settings
+      home-mods.nvim
       {
         home = {
           username = "row";
