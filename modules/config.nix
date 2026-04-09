@@ -11,7 +11,7 @@
     modules = [
       self.modules.nixos.boot
       self.modules.nixos.rill
-      self.modules.nixos.hardware
+      self.modules.nixos.hardware-h61
       self.modules.nixos.nixos
       self.modules.nixos.users
       self.modules.nixos.ly

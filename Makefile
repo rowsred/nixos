@@ -3,9 +3,9 @@
 def:
 
 os:
-	sudo nixos-rebuild switch --flake --impure
+	sudo nixos-rebuild switch --flake . 
 test:
-	sudo nixos-rebuild test --flake --impure
+	sudo nixos-rebuild test --flake .
 home:
 	nix run home-manager/master -- switch --flake .
 
