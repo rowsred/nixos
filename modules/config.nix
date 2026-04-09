@@ -32,6 +32,8 @@
     };
     modules = [
       self.modules.homeManager.nvim
+      self.modules.homeManager.shell-settings
+      self.modules.homeManager.git-settings
       self.modules.homeManager.dev-apps
       {
         home = {

@@ -34,9 +34,9 @@ CONFIG_LIST=(
 )
 
 HOME_FILES=(
-    ".bashrc:bashrc"
+#    ".bashrc:bashrc"
 #    ".zshrc:zshrc"
-    ".gitconfig:gitconfig"
+#    ".gitconfig:gitconfig"
     ".tmux.conf:tmux.conf"
 )
 
