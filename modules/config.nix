@@ -3,13 +3,18 @@
 # Date: 2026-04-08
 # Description: just for hoby
 
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  ...
+}:
 let
   home-mods = self.modules.homeManager;
   nixos-mods = self.modules.nixos;
 
 in
 {
+
   flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
 
     specialArgs = { inherit inputs; };
