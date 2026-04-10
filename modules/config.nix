@@ -14,19 +14,18 @@ let
 
 in
 {
-
   flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
 
     specialArgs = { inherit inputs; };
     modules = [
       nixos-mods.hardware-h61
       nixos-mods.boot
+      nixos-mods.users
+      nixos-mods.nix-settings
+      nixos-mods.nixos
+      nixos-mods.ly
       nixos-mods.rill
       #nixos-mods.kwm
-      nixos-mods.nixos
-      nixos-mods.users
-      nixos-mods.ly
-      nixos-mods.nix-settings
       nixos-mods.system-apps
       {
         nixpkgs.hostPlatform = "x86_64-linux";
@@ -36,10 +35,10 @@ in
 
   configurations.home.row.module = {
     imports = [
-      home-mods.git-settings
-      home-mods.dev-apps
       home-mods.shell-settings
+      home-mods.dev-apps
       home-mods.nvim
+      home-mods.git-settings
       {
         home = {
           username = "row";
