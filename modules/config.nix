@@ -15,8 +15,11 @@ let
 
 in
 {
+  imports = [
+    inputs.flake-parts.flakeModules.modules
+    inputs.home-manager.flakeModules.home-manager
+  ];
   flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
-
     specialArgs = { inherit inputs; };
     modules = [
       nixos-mods.hardware-h61
@@ -39,9 +42,9 @@ in
   configurations.home.row.module = {
     imports = [
 
-      home-mods.Shell
-      home-mods.Nvim
-      home-mods.Git
+      home-mods.shell-settings
+      home-mods.neovim
+      home-mods.git-settings
       {
         home = {
           username = "row";
