@@ -1,8 +1,8 @@
-# File: home-linux.nix
+# File: home-manager.nix
 # Author: rowsred
-# Date: 2026-04-10
+# Date: 2026-04-11
 # Description: just for hoby
-{ inputs,... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager = {
     Shell =
@@ -54,7 +54,7 @@
       };
 
     Nvim =
-      {  pkgs, ... }:
+      { pkgs, ... }:
       let
         unstable = import inputs.nixpkgs-unstable {
           system = pkgs.stdenv.hostPlatform.system;

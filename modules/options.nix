@@ -1,8 +1,7 @@
 # File: options.nix
 # Author: rowsred
-# Date: 2026-04-10
+# Date: 2026-04-11
 # Description: just for hoby
-
 {
   inputs,
   lib,

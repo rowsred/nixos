@@ -6,11 +6,12 @@
 {
   self,
   inputs,
+  config,
   ...
 }:
 let
   home-mods = self.modules.homeManager;
-  nixos-mods = self.modules.nixos;
+  nixos-mods = config.flake.modules.nixos;
 
 in
 {
@@ -18,18 +19,17 @@ in
 
     specialArgs = { inherit inputs; };
     modules = [
-      nixos-mods.Hardware-h61
-#      nixos-mods.Flake-parts
-      nixos-mods.Boot
-      nixos-mods.Users
-      nixos-mods.Nix-settings
-      nixos-mods.System-apps
-      nixos-mods.State-version
-      nixos-mods.Network
-      nixos-mods.Window-manager
-      nixos-mods.Display-manager
-      nixos-mods.Apps-launcher
-      nixos-mods.Default-browser
+      nixos-mods.hardware-h61
+      nixos-mods.boot
+      nixos-mods.users
+      nixos-mods.nix-settings
+      nixos-mods.system-apps
+      nixos-mods.state-version
+      nixos-mods.network
+      nixos-mods.window-manager
+      nixos-mods.display-manager
+      nixos-mods.apps-launcher
+      nixos-mods.default-browser
       {
         nixpkgs.hostPlatform = "x86_64-linux";
       }
@@ -38,6 +38,7 @@ in
 
   configurations.home.row.module = {
     imports = [
+
       home-mods.Shell
       home-mods.Nvim
       home-mods.Git
