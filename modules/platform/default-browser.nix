@@ -2,10 +2,10 @@
 # Author: rowsred
 # Date: 2026-04-11
 # Description: just for hoby
-{ ... }:
+{ inputs, ... }:
 {
   flake.modules.nixos.default-browser =
-    { pkgs, inputs, ... }:
+    { pkgs, ... }:
     let
       unstable = import inputs.nixpkgs-unstable {
         system = pkgs.stdenv.hostPlatform.system;

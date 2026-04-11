@@ -10,8 +10,8 @@
   ...
 }:
 let
-  home-mods = self.modules.homeManager;
-  nixos-mods = config.flake.modules.nixos;
+  inherit (config.flake.modules) nixos;
+  inherit (config.flake.modules) homeManager;
 
 in
 {
@@ -19,20 +19,19 @@ in
     inputs.flake-parts.flakeModules.modules
     inputs.home-manager.flakeModules.home-manager
   ];
-  flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = { inherit inputs; };
-    modules = [
-      nixos-mods.hardware-h61
-      nixos-mods.boot
-      nixos-mods.users
-      nixos-mods.nix-settings
-      nixos-mods.system-apps
-      nixos-mods.state-version
-      nixos-mods.network
-      nixos-mods.window-manager
-      nixos-mods.display-manager
-      nixos-mods.apps-launcher
-      nixos-mods.default-browser
+  configurations.nixos.nixos.module = {
+    imports = [
+      nixos.hardware-h61
+      nixos.boot
+      nixos.users
+      nixos.nix-settings
+      nixos.system-apps
+      nixos.state-version
+      nixos.network
+      nixos.window-manager
+      nixos.display-manager
+      nixos.apps-launcher
+      nixos.default-browser
       {
         nixpkgs.hostPlatform = "x86_64-linux";
       }
@@ -41,10 +40,9 @@ in
 
   configurations.home.row.module = {
     imports = [
-
-      home-mods.shell-settings
-      home-mods.neovim
-      home-mods.git-settings
+      homeManager.shell-settings
+      homeManager.neovim
+      homeManager.git-settings
       {
         home = {
           username = "row";
