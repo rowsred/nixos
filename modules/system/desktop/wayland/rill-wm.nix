@@ -1,10 +1,11 @@
-# File: window-manager.nix
+# File: rill-wm.nix
 # Author: rowsred
-# Date: 2026-04-11
+# Date: 2026-04-14
 # Description: just for hoby
+
 { inputs, ... }:
 {
-  flake.modules.nixos.window-manager =
+  flake.modules.nixos.rill =
     { ... }:
     {
       imports = [

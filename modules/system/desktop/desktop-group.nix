@@ -7,9 +7,8 @@
 {
   flake.modules.nixos.desktop-group = {
     imports = [
-      config.flake.modules.nixos.app-launcher
       config.flake.modules.nixos.display-manager
-      config.flake.modules.nixos.window-manager
+      config.flake.modules.nixos.wayland-group
       config.flake.modules.nixos.apps-group
     ];
   };

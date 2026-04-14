@@ -3,76 +3,45 @@
 A minimal and organized NixOS setup using **flake-parts** and the **Dendritic Pattern**.
 
 ## 📂 Structure
+```
+tree modules/
 modules/
-├── system/
-│   ├── core/
-│   │   ├── boot.nix
-│   │   ├── nix-settings.nix
-│   │   ├── state-version.nix
-│   │   └── trusted-users.nix
-│   │
-│   ├── kernel/
-│   │   ├── hardware.nix
-│   │   ├── filesystem.nix
-│   │   └── kernel-tuning.nix
-│   │
-│   ├── services/
-│   │   ├── network.nix
-│   │   ├── security.nix
-│   │   ├── users.nix
-│   │   └── power-management.nix
-│   │
-│   └── packages/
-│       └── system-apps.nix
-│
-├── desktop/
-│   ├── environment/
-│   │   ├── desktop.nix
-│   │   ├── display-manager.nix
-│   │   ├── window-manager.nix
-│   │   └── compositor.nix
-│   │
-│   ├── ui-framework/
-│   │   ├── theme.nix
-│   │   ├── fonts.nix
-│   │   └── input.nix
-│   │
-│   ├── launcher/
-│   │   └── app-launcher.nix
-│   │
-│   └── apps/
-│       └── default-browser.nix
-│
-├── home/
-│   ├── shell/
-│   │   ├── shell-settings.nix
-│   │   └── zsh.nix
-│   │
-│   ├── git/
-│   │   └── git-settings.nix
-│   │
-│   ├── neovim/
-│   │   └── neovim.nix
-│   │
-│   └── apps/
-│       └── user-apps.nix
-│
-├── features/
-│   ├── browser/
-│   │   ├── google-chrome.nix
-│   │   └── browser.nix
-│   │
-│   ├── nix/
-│   │   ├── flakes.nix
-│   │   └── experimental-features.nix
-│   │
-│   ├── dev/
-│   │   └── toolchains.nix
-│   │
-│   └── media/
-│       └── multimedia.nix
-│
-└── entry/
-    ├── config.nix
-    └── options.nix
+├── home
+│   ├── git-settings.nix
+│   ├── neovim.nix
+│   └── shell-settings.nix
+├── nixos
+│   ├── nixos-options.nix
+│   └── nixos-root.nix
+└── system
+    ├── core
+    │   ├── boot.nix
+    │   ├── core-group.nix
+    │   ├── hardware.nix
+    │   ├── nix
+    │   │   ├── features-flake.nix
+    │   │   ├── nix-group.nix
+    │   │   └── trusted-users.nix
+    │   ├── state-version.nix
+    │   └── users.nix
+    ├── desktop
+    │   ├── apps
+    │   │   ├── apps-group.nix
+    │   │   ├── browser
+    │   │   │   ├── browser-group.nix
+    │   │   │   └── google-chrome.nix
+    │   │   └── system-apps.nix
+    │   ├── desktop-group.nix
+    │   ├── display-manager.nix
+    │   └── wayland
+    │       ├── app-launcher.nix
+    │       ├── rill-wm.nix
+    │       ├── shell
+    │       └── wayland-group.nix
+    ├── services
+    │   ├── network.nix
+    │   └── services-group.nix
+    └── system-root.nix
 
+12 directories, 25 files
+```
