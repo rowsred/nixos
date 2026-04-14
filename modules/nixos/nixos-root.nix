@@ -28,9 +28,7 @@ in
 
   configurations.home.row.module = {
     imports = [
-      homeManager.shell-settings
-      homeManager.neovim
-      homeManager.git-settings
+      homeManager.home-root
       {
         home = {
           username = "row";
