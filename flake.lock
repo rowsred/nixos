@@ -109,11 +109,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1775820436,
-        "narHash": "sha256-1hNcD0mRWIRoVRrv1YtUuaB7hB1Sd4G8Wt66xx5MshI=",
+        "lastModified": 1776257956,
+        "narHash": "sha256-StGJYaNcVEKzqsXskAoTKneXx1C2Fk8wmyRAw+rAU3w=",
         "owner": "rowsred",
         "repo": "river_kwm_modules_nixos",
-        "rev": "f2e154cc356f079c093b541e7f9027cf14753234",
+        "rev": "f6f4785e150ee16dcfb0a2eadbf2d5eefc588cd6",
         "type": "github"
       },
       "original": {

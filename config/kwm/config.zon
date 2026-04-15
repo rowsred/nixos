@@ -25,7 +25,7 @@
         .show_default = true,
         // .top
         // .bottom
-        .position = .bottom,
+        .position = .top,
         .font = "monospace:size=10",
         .color = .{
             .normal = .{
@@ -70,6 +70,9 @@
     // .on_output_changed: warp cursor to the center of output focused
     .cursor_warp = .none,
 
+    // disable wrap around when iter focus or swap window in scroller layout
+    .disable_wrap_around_for_scroller = false,
+
     // if to remember last floating geometry
     .remember_floating_geometry = false,
 
@@ -99,6 +102,7 @@
         .color = .{
             .focus = 0xffc777ff,
             .unfocus = 0x828bb8ff,
+            .swallowing = 0x0830e6ff,
         },
     },
 
@@ -147,7 +151,7 @@
             .master_location = .left,
         },
         .scroller = .{
-            .mfact = 1,
+            .mfact = 0.5,
             .inner_gap = 16,
             .outer_gap = 9,
         },
@@ -589,6 +593,15 @@
                 },
             },
             .{
+                .keysym = "e",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .toggle_maximize,
+                    },
+                },
+            },
+            .{
                 .keysym = "space",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
@@ -791,7 +804,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .modify_mfact = .{ .step = 0.01 },
+                            .modify_mfact = .{ .change = .{ .step = 0.01 } },
                         },
                     },
                 },
@@ -802,7 +815,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .modify_mfact = .{ .step = -0.01 },
+                            .modify_mfact = .{ .change = .{ .step = -0.01 } },
                         },
                     },
                 },
@@ -920,7 +933,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "fuzzel" },
+                            .spawn_shell = .{ .cmd = "wmenu-run" },
                         },
                     },
                 },
@@ -931,7 +944,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "kitty" } },
+                            .spawn = .{ .argv = .{ "foot" } },
                         },
                     },
                 },
@@ -1027,6 +1040,7 @@
         //
     },
 
+    // NOTE: do not delete next line if you are compiling kwm
     // @if(kewuaa=super_hansome)
     // input device rules
     // full scheme:
