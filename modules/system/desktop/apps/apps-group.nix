@@ -8,7 +8,7 @@
 {
   flake.modules.nixos.apps-group = {
     imports = [
-
+      config.flake.modules.nixos.podman
       config.flake.modules.nixos.system-apps
       config.flake.modules.nixos.browser-group
     ];

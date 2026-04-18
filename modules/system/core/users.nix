@@ -13,6 +13,7 @@
           "wheel"
           "adbusers"
           "kvm"
+          "podman"
         ]; # Enable ‘sudo’ for the user.
       };
     };
