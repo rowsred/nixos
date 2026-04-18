@@ -7,8 +7,8 @@
   flake.modules.nixos.wayland-group = {
     imports = [
       config.flake.modules.nixos.rill
-      config.flake.modules.nixos.kwm
-      #      config.flake.modules.nixos.hyprland
+      #config.flake.modules.nixos.kwm
+      #config.flake.modules.nixos.hyprland
       config.flake.modules.nixos.app-launcher
     ];
   };
