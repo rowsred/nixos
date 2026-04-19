@@ -17,6 +17,7 @@
         unstable.wl-clipboard-rs
         unstable.tree-sitter
         unstable.nil
+        unstable.clang
         pkgs.nixfmt
         pkgs.slint-lsp
         pkgs.clang-tools

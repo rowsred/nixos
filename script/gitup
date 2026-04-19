@@ -1,4 +1,0 @@
-git add .
-read -p "mesages>" mesage
-git commit -m "$mesage"
-git push

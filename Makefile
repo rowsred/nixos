@@ -3,7 +3,7 @@
 def:
 
 os:
-	sudo nixos-rebuild switch --flake . 
+	sudo nixos-rebuild switch --flake .
 test:
 	sudo nixos-rebuild test --flake .
 home:

@@ -7,7 +7,7 @@
   flake.modules.nixos.users =
     { ... }:
     {
-      users.users.row = {
+      users.users.row= {
         isNormalUser = true;
         extraGroups = [
           "wheel"

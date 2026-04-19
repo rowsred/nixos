@@ -26,6 +26,15 @@ in
     ];
   };
 
+  configurations.nixos.red-host.module = {
+    imports = [
+      nixos.system-root
+      {
+        nixpkgs.hostPlatform = "x86_64-linux";
+      }
+    ];
+  };
+
   configurations.home.row.module = {
     imports = [
       homeManager.home-root

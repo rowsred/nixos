@@ -8,6 +8,7 @@
   nixConfig = {
     trusted-substituters = [
       "https://nix-community.cachix.org"
+      "https://noctalia.cachix.org"
       "https://cache.nixos.org"
     ];
   };
@@ -22,6 +23,11 @@
     kwm.url = "github:rowsred/river_kwm_modules_nixos";
     import-tree.url = "github:vic/import-tree";
     home-manager.url = "github:nix-community/home-manager";
+    niri.url = "github:sodiboo/niri-flake";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
