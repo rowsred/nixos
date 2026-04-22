@@ -7,6 +7,7 @@ vim.opt.expandtab = true -- Mengubah karakter tab menjadi spasi
 vim.opt.ignorecase = true
 -- Jika kamu mengetik huruf besar secara sengaja, baru dia jadi case sensitive
 vim.opt.smartcase = true
+vim.opt.colorcolumn = "80"
 -- Mengatur perilaku menu popup (pum)
 ---- Konfigurasi popup menu yang lebih cerdas dan tidak mengganggu
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "nosort", "noinsert" }
