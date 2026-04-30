@@ -10,6 +10,7 @@
       config.flake.homeModules.neovim
       config.flake.homeModules.dotfiles-manager
       config.flake.homeModules.git
+      config.flake.homeModules.starship
       {
         home = {
           username = "dev";
