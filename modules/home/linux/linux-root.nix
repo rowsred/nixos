@@ -5,17 +5,17 @@
 { config, ... }:
 {
 
-  configurations.home.dev.module = {
+  configurations.home.row.module = {
     imports = [
       config.flake.homeModules.neovim
-      config.flake.homeModules.dotfiles-manager
+      #config.flake.homeModules.dotfiles-manager
       config.flake.homeModules.git
       config.flake.homeModules.starship
       config.flake.homeModules.packages
       {
         home = {
-          username = "dev";
-          homeDirectory = "/home/dev";
+          username = "row";
+          homeDirectory = "/home/row";
           stateVersion = "25.11";
         };
       }
