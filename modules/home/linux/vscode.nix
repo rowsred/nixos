@@ -10,7 +10,6 @@
       programs.vscode = {
         enable = true;
         extensions = with pkgs.vscode-extensions; [
-          github.github-vscode-theme
           vscodevim.vim # The essential Vim plugin
           # Add other plugins here, e.g., dracula-theme.theme-dracula
         ];
@@ -80,56 +79,76 @@
               ];
               "commands" = [ "workbench.action.quickOpen" ];
             }
-            {
-              "before" = [ "<C-v>" ];
-              "commands" = [ "workbench.action.focusFirstEditorGroup" ];
-            }
           ];
-          # --- REMOVE AI FEATURES ---
+          # --- 1. TOTAL UI PURGE (Hanya Status Bar) ---
+          "window.titleBarStyle" = "custom";
+          "window.menuBarVisibility" = "hidden";
+          "workbench.activityBar.location" = "hidden";
+          "workbench.statusBar.visible" = true;
+          "workbench.sideBar.location" = "left";
+          "editor.minimap.enabled" = false;
+          "editor.scrollbar.vertical" = "hidden";
+          "editor.scrollbar.horizontal" = "hidden";
+          "editor.guides.bracketPairs" = "active";
+          "editor.guides.indentation" = false;
+          "workbench.layoutControl.enabled" = false;
+          "window.commandCenter" = false;
+          "workbench.tips.enabled" = false;
+
+          # --- 2. FORCE DARK & NO BORDERS (Hapus sisa garis putih) ---
+          "workbench.colorCustomizations" = {
+            "window.border" = "#0d1117";
+            "titleBar.activeBackground" = "#0d1117";
+            "titleBar.inactiveBackground" = "#0d1117";
+            "titleBar.border" = "#0d1117";
+            "sideBar.background" = "#0d1117";
+            "sideBar.border" = "#0d1117";
+            "activityBar.border" = "#0d1117";
+            "editorGroup.border" = "#0d1117";
+            "editorGroupHeader.tabsBackground" = "#0d1117";
+            "tab.border" = "#0d1117";
+            "tab.activeBorder" = "#0d1117";
+            "statusBar.background" = "#0d1117";
+            "statusBar.border" = "#0d1117";
+            "editor.background" = "#0d1117";
+          };
+
+          # --- 3. KILL ALL AI AGENTS & BLOAT ---
           "github.copilot.enable" = {
             "*" = false;
-          }; # Kill Copilot if installed
-          # --- macOS Look & Font ---
-          "workbench.colorTheme" = "GitHub Dark";
-          "editor.lineHeight" = 22;
-          "window.titleBarStyle" = "native";
-          "workbench.activityBar.location" = "hidden";
-          "editor.minimap.enabled" = false;
-          "editor.cursorBlinking" = "smooth";
-
-          # --- Smart Highlighting ---
-          "editor.semanticHighlighting.enabled" = true;
-          "editor.bracketPairColorization.enabled" = true;
-          "editor.guides.bracketPairs" = "active";
-
-          "editor.fontFamily" = "'SFMono Nerd Font', 'monospace'";
-          "editor.fontLigatures" = true;
-          "editor.formatOnSave" = true;
-          "editor.fontSize" = 12;
-          "editor.inlineSuggest.enabled" = false; # Kill AI ghost text
-          "editor.suggest.showMethods" = true; # Keep standard local suggestions
-          "editor.suggest.showSnippets" = true;
-          "intellicode.completionsEnabled" = false; # Kill MS IntelliCode AI
-          "workbench.layoutControl.enabled" = false; # Cleans up UI buttons
-          "editor.guides.bracketPairsHorizontal" = false;
-
-          "github.copilot.chat.enableCodeAction" = false;
+          };
           "github.copilot.editor.enableChat" = false;
           "github.copilot.editor.enableAutoCompletions" = false;
-          "scm.showActionButton" = false;
-          "github.copilot.chat.generateChatParticipantInference" = false;
-          "workbench.panel.opensMaximized" = "never";
+          "github.copilot.chat.enableCodeAction" = false;
           "github.copilot.chat.welcomeMessage" = "never";
-          "window.commandCenter" = false;
-          "vim.handleKeys" = {
-            "<C-v>" = true;
-          };
-          # 3. Recommended Vim settings
+          "intellicode.completionsEnabled" = false;
+          "editor.inlineSuggest.enabled" = false;
+          "scm.showActionButton" = false;
+          "chat.editing.alwaysConfirmWithAgent" = "never";
+          "editor.ai.enabled" = false;
+
+          # --- CLEAN SCROLLBAR ---
+
+          # ... sisa pengaturan Vim & AI tetap di sini ...
+
+          # --- SMART HIGHLIGHTING ---
+          "editor.semanticHighlighting.enabled" = true;
+          "editor.bracketPairColorization.enabled" = true;
+          "editor.guides.bracketPairsHorizontal" = false;
+
+          # --- FONT (SF MONO) ---
+          "editor.fontFamily" = "'SFMono Nerd Font', 'monospace'";
+          "editor.fontLigatures" = true;
+          "editor.fontSize" = 12;
+          "editor.lineHeight" = 20; # Tambah jarak baris agar tidak sesak
+
+          # --- VIM & PERFORMANCE ---
           "vim.useSystemClipboard" = true;
           "vim.hlsearch" = true;
+          "editor.formatOnSave" = true;
+
         };
       };
 
     };
-
 }
