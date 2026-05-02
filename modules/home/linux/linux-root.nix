@@ -12,6 +12,7 @@
       config.flake.homeModules.git
       config.flake.homeModules.starship
       config.flake.homeModules.packages
+      config.flake.homeModules.vscode
       {
         home = {
           username = "row";
