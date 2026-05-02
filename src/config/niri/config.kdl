@@ -318,6 +318,11 @@ window-rule {
     default-column-width {}
 }
 
+window-rule {
+    match app-id="code"
+    draw-border-with-background false
+}
+
 
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {

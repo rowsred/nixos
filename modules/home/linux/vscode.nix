@@ -23,15 +23,10 @@
         ];
 
         userSettings = {
-          "breadcrumbs.enabled" = false;
-          "window.commandCenter" = false;
           "editor.minimap.enabled" = false;
-          "workbench.activityBar.location" = "hidden";
-          "editor.scrollbar.horizontal" = "hidden";
-          "editor.scrollbar.vertical" = "hidden";
-          "editor.hideCursorInOverviewRuler" = true;
-          "workbench.editor.tabActionCloseVisibility" = false;
-          "workbench.editor.showTabs" = "single";
+          "window.titleBarStyle" = "native";
+          "window.menuBarVisibility" = "toggle";
+          "window.customTitleBarVisibility" = "never";
 
           "vim.leader" = "<space>";
           "vim.insertModeKeyBindings" = [
