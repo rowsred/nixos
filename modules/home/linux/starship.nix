@@ -5,34 +5,30 @@
 
 { ... }:
 {
-  flake.homeModules.starship = {
+  flake.homeModules.starship =
+    { pkgs, ... }:
+    {
 
-    programs.bash = {
-      enable = true;
-      enableCompletion = true;
-      profileExtra = ''
-        # Custom logic that usually goes in .profile
-        if [ -d "$HOME/.local/bin" ] ; then
-        PATH="$HOME/.local/bin:$PATH"
-        fi
+      programs.bash = {
+        enable = true;
+        enableCompletion = true;
+        profileExtra = ''
+          if [ -d "$HOME/.local/bin" ] ; then
+          PATH="$HOME/.local/bin:$PATH"
+          fi
+        '';
+        bashrcExtra = ''
+          export HISTSIZE=10000
+          alias ls=lsd
+        '';
+      };
+      home.packages = with pkgs; [
+        lsd
+      ];
 
-        if [ -z $XDG_RUNTIME_DIR ];then
-        export XDG_RUNTIME_DIR=/tmp/user/$(id -u)
-        mkdir -p $XDG_RUNTIME_DIR 
-        chmod 700 $XDG_RUNTIME_DIR 
-        fi
-        alias ls=lsd
-
-      '';
-      bashrcExtra = ''
-        # Extra interactive shell config
-        export HISTSIZE=10000
-      '';
+      programs.starship = {
+        enable = true;
+        enableBashIntegration = true; # Default is true
+      };
     };
-
-    programs.starship = {
-      enable = true;
-      enableBashIntegration = true; # Default is true
-    };
-  };
 }

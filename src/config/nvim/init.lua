@@ -73,6 +73,8 @@ map("n", "<leader>q", ":q<CR>", { noremap = true })
 map("n", "<leader>c", ":bdel<CR>", { noremap = true })
 map("n", "<leader>x", ":bp<CR>", { noremap = true })
 map("n", "<leader>ff", ":Pick files<CR>", { noremap = true })
+map("v", "<Tab>", ">gv", { noremap = true })
+map("v", "<S-Tab>", "<gv", { noremap = true })
 --:CUSTOM HEADER
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {

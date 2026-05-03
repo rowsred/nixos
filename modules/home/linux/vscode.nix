@@ -34,6 +34,7 @@
             ];
 
             extensions = with pkgs.vscode-extensions; [
+              rust-lang.rust-analyzer
               sumneko.lua
               vscodevim.vim
               jnoortheen.nix-ide
@@ -42,6 +43,14 @@
             ];
 
             userSettings = {
+              #remove auto restore
+              "window.restoreWindows" = "none";
+              "files.hotExit" = "off";
+              "search.searchOnType" = false;
+              "history.limit" = 0;
+              "terminal.integrated.enablePersistentSessions" = false;
+              "workbench.startupEditor" = "none";
+              #scrool remove config
               "editor.scrollbar.vertical" = "hidden";
               "editor.scrollbar.horizontal" = "hidden";
               "editor.scrollbar.verticalScrollbarSize" = 0;
