@@ -1,9 +1,28 @@
+#
+#
+#
+#
+#
+# --- PATH MANAGEMENT ---
+add_to_path() {
+    if [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
+add_to_path "$HOME/.nix-profile/bin"   # Prioritas 1 (Tertinggi)
+add_to_path "$HOME/.cargo/bin"         # Prioritas 2
+add_to_path "$HOME/.local/bin"          # Prioritas 3
 
-
-
-
-
-
-
-
+# Integrasi Starship Prompt
+if command -v starship &> /dev/null; then
+    eval "$(starship init bash)"
+fi
+# Wayland Environment
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+    export QT_QPA_PLATFORM=wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
+fi
+export LIBGL_ALWAYS_SOFTWARE=0      # Memastikan hardware acceleration aktif
+export INTEL_DEBUG=noccs
 alias ls="ls --color=auto"
