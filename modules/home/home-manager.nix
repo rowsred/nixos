@@ -2,8 +2,11 @@
 # Author: rowsred
 # Date: 2026-05-05
 # Descriptions:
-{ config, ... }:
+{ config, inputs, ... }:
 {
+  imports = [
+    inputs.home-manager.flakeModules.home-manager
+  ];
   configurations.home.row.module = {
     imports = [
       config.flake.homeModules.editors-manager

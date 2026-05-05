@@ -3,11 +3,15 @@
 # Date: 2026-04-14
 # Description: just for hoby
 
-{ config, ... }:
+{ config, inputs, ... }:
 let
   inherit (config.flake.modules) nixos;
 in
 {
+  imports = [
+
+    inputs.flake-parts.flakeModules.modules
+  ];
   configurations.nixos.nixos.module = {
     imports = [
       nixos.system-root
