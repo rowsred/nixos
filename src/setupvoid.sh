@@ -12,10 +12,10 @@ sudo tee /etc/xbps.d/00-repository-main.conf << 'EOF'
 repository=https://mirror.freedif.org/voidlinux/current
 EOF
 sudo xbps-install -Syy 
+    sleep 1
 
 if [ ! -L "/var/service/seatd" ]; then
     printf "\n${B}[*] Setting up XDG Runtime in system...${N}\n"
-    sleep 1
     # Create the profile script
     sudo tee "$FILE_PATH" > /dev/null << 'EOF'
 #!/bin/sh
@@ -32,6 +32,17 @@ EOF
 else
     printf "\n${B}[*] XDG Runtime script is ready in system...${N}\n"
 fi
+
+    sleep 1
+printf "\n${B}[*] Setuping dbus-louch ...${N}\n"
+[ -f /etc/profile.d/dbus-session.sh ] || sudo tee /etc/profile.d/dbus-session.sh << 'EOF'
+# Start a D-Bus session bus if one isn't already running
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    eval $(dbus-launch --sh-syntax --exit-with-session)
+fi
+EOF
+
+    sleep 1
 printf "\n${B}[*] Installing seatd...${N}\n"
 sudo xbps-install -Sy seatd dbus niri mesa-dri sddm xorg 
 
@@ -42,6 +53,7 @@ if [ ! -L "/var/service/seatd" ]; then
 else
     printf "${B}[!] seatd service already enabled.${N}\n"
 fi
+    sleep 1
 
 printf "\n${B}[*] Enabling dbus service...${N}\n"
 if [ ! -L "/var/service/dbus" ]; then
@@ -50,6 +62,7 @@ if [ ! -L "/var/service/dbus" ]; then
 else
     printf "${B}[!] dbus service already enabled.${N}\n"
 fi
+    sleep 1
 
 printf "\n${B}[*] Enabling sddm service...${N}\n"
 if [ ! -L "/var/service/sddm" ]; then
@@ -58,6 +71,7 @@ if [ ! -L "/var/service/sddm" ]; then
 else
     printf "${B}[!] sddm service already enabled.${N}\n"
 fi
+    sleep 1
 
 printf "\n${B}[*] Setuping user groups...${N}\n"
 for group in audio video _seatd input; do
@@ -68,6 +82,7 @@ for group in audio video _seatd input; do
         printf "${G}[SUCCESS] User already on $group group.${N}\n"
     fi
 done
+    sleep 1
 printf "\n${B}[*] Preparing font directory...${N}\n"
 
 # 1. Pastikan direktori fonts utama user ada
@@ -97,4 +112,5 @@ if git clone --depth 1 https://github.com/epk/SF-Mono-Nerd-Font.git "$FONT_TARGE
 else
     printf "${R}[ERROR] Failed to clone font repository. Check your internet connection.${N}\n"
 fi
+    sleep 1
 printf "\n${G}Done! Please log out and back in for changes to take effect.${N}\n"
