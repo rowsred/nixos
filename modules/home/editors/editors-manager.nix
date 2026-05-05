@@ -4,12 +4,10 @@
 # Descriptions:
 { config, ... }:
 {
-  flake.homeModules.package-manager = {
+  flake.homeModules.editors-manager = {
     imports = [
       config.flake.homeModules.neovim
-      config.flake.homeModules.git
       config.flake.homeModules.vscode
-      config.flake.homeModules.dev
     ];
   };
 }

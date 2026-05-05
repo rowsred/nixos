@@ -5,7 +5,7 @@
 
 { ... }:
 {
-  flake.homeModules.dev =
+  flake.homeModules.app =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

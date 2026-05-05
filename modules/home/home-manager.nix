@@ -1,11 +1,14 @@
 # File: home-manager.nix
 # Author: rowsred
 # Date: 2026-05-05
-# Descriptions: 
-{config,...}:{
+# Descriptions:
+{ config, ... }:
+{
   configurations.home.row.module = {
     imports = [
-      config.flake.homeModules.package-manager
+      config.flake.homeModules.editors-manager
+      config.flake.homeModules.dev-manager
+      config.flake.homeModules.apps-manager
       {
         home = {
           username = "row";

@@ -41,6 +41,16 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval $(dbus-launch --sh-syntax --exit-with-session)
 fi
 EOF
+    sleep 1
+
+printf "\n${B}[*] Setuping file limits...${N}\n"
+# Get the current user name first
+CURRENT_USER=$(whoami)
+
+sudo tee -a /etc/security/limits.conf << EOF
+$CURRENT_USER soft nofile 65536
+$CURRENT_USER hard nofile 65536
+EOF
 
     sleep 1
 printf "\n${B}[*] Installing seatd...${N}\n"
