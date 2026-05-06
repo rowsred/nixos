@@ -14,8 +14,10 @@ add_to_path "$HOME/.cargo/bin"         # Prioritas 2
 add_to_path "$HOME/.local/bin"          # Prioritas 3
 
 # Integrasi Starship Prompt
+
 if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
+
 fi
 # Wayland Environment
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
@@ -23,6 +25,4 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export QT_QPA_PLATFORM=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
 fi
-export LIBGL_ALWAYS_SOFTWARE=0      # Memastikan hardware acceleration aktif
-export INTEL_DEBUG=noccs
 alias ls="ls --color=auto"

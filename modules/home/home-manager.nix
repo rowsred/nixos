@@ -12,6 +12,7 @@
       config.flake.homeModules.editors-manager
       config.flake.homeModules.dev-manager
       config.flake.homeModules.apps-manager
+      inputs.kwm.homeModules.default
       {
         home = {
           username = "row";
